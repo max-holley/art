@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelCraft - Pixel Art Creator</title>
+    <title>PixelCraft Pro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./logo.jpeg">
 </head>
@@ -14,8 +14,13 @@
             <h2>PixelCraft</h2>
             
             <div class="control-group">
-                <label>Grid Size</label>
+                <label>Grid Size (8-64)</label>
                 <input type="number" id="grid-size" value="32" min="8" max="64">
+            </div>
+
+            <div class="control-group">
+                <label>Background Color</label>
+                <input type="color" id="bg-color-picker" value="#ffffff">
             </div>
 
             <div class="control-group">
@@ -26,7 +31,7 @@
             <div class="button-group">
                 <button id="btn-draw" class="active">Pen</button>
                 <button id="btn-erase">Eraser</button>
-                <button id="btn-clear">Clear Canvas</button>
+                <button id="btn-clear">Clear All</button>
             </div>
 
             <hr>
@@ -35,14 +40,25 @@
                 <label>Export Format</label>
                 <select id="export-format">
                     <option value="image/png">PNG</option>
+                    <option value="image/webp">WebP</option>
                     <option value="image/jpeg">JPEG</option>
                 </select>
-                <button id="btn-download" class="primary">Download Image</button>
             </div>
+
+            <div class="control-group" id="transparency-container">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="check-transparent"> Transparent Export
+                </label>
+            </div>
+
+            <button id="btn-download" class="primary">Download Masterpiece</button>
         </aside>
 
         <main class="canvas-area">
-            <canvas id="pixel-canvas"></canvas>
+            <div id="canvas-container">
+                <canvas id="pixel-canvas"></canvas>
+                <canvas id="grid-canvas"></canvas>
+            </div>
         </main>
     </div>
 
