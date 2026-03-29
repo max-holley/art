@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelCraft Pro - Desktop</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PixelCraft Pro</title>
     <link rel="icon" href="./logo.jpeg">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="mobile-blocker">
         <div class="message-box">
             <h1>🖥️ Desktop Required</h1>
-            <p>PixelCraft Pro requires a larger screen and precise pointer input. Please switch to a Tablet, Laptop, or Desktop computer.</p>
+            <p>PixelCraft Pro requires a larger screen and precise pointer input. Please use a Laptop or Desktop computer.</p>
         </div>
     </div>
 
@@ -21,8 +21,23 @@
             <h2>PixelCraft Pro</h2>
             
             <div class="control-group">
-                <label>Grid Size (8-128)</label>
-                <input type="number" id="grid-size" value="32" min="8" max="128">
+                <label>Grid Size</label>
+                <input type="number" id="grid-size" value="8">
+            </div>
+
+            <div class="control-group">
+                <label>Grid Opacity</label>
+                <input type="range" id="grid-opacity" min="0" max="1" step="0.05" value="0.7">
+            </div>
+
+            <div class="button-group">
+                <button id="btn-undo">Undo</button>
+                <button id="btn-redo">Redo</button>
+            </div>
+
+            <div class="control-group">
+                <label>Background</label>
+                <input type="color" id="bg-color-picker" value="#a1a1a1">
             </div>
 
             <div class="control-group">
@@ -32,44 +47,46 @@
 
             <div class="button-group">
                 <button id="btn-draw" class="active">Pen</button>
-                <button id="btn-fill">Bucket Fill</button>
+                <button id="btn-fill">Bucket</button>
                 <button id="btn-erase">Eraser</button>
-                <button id="btn-clear">Clear All</button>
+                <button id="btn-clear">Clear</button>
             </div>
 
             <hr>
 
             <div class="control-group">
-                <label>Zoom (Mouse Wheel to zoom)</label>
-                <button id="btn-reset-view">Reset View</button>
+                <label>Project File (.json)</label>
+                <div class="button-group">
+                    <button id="btn-save-project">Save</button>
+                    <button id="btn-load-project">Load</button>
+                </div>
+                <input type="file" id="file-input" accept=".json" style="display:none">
             </div>
 
             <div class="control-group">
-                <label>Export Format</label>
+                <label>Export Image</label>
                 <select id="export-format">
                     <option value="image/png">PNG</option>
                     <option value="image/webp">WebP</option>
                     <option value="image/jpeg">JPEG</option>
                 </select>
-            </div>
-
-            <div class="control-group" id="transparency-container">
-                <label class="checkbox-label">
-                    <input type="checkbox" id="check-transparent"> Transparent Export
+                <label class="checkbox-label" id="transparency-label">
+                    <input type="checkbox" id="check-transparent"> Transparent
                 </label>
+                <button id="btn-download" class="primary">Download Image</button>
             </div>
-
-            <button id="btn-download" class="primary">Download Art</button>
+            
+            <button id="btn-reset-view">Reset Zoom</button>
         </aside>
 
         <main class="canvas-area">
             <div id="viewport">
                 <div id="canvas-container">
-                    <canvas id="pixel-canvas"></canvas>
-                    <canvas id="grid-canvas"></canvas>
+                    <canvas id="pixel-canvas" width="600" height="600"></canvas>
+                    <canvas id="grid-canvas" width="600" height="600"></canvas>
                 </div>
             </div>
-            <div class="instructions">Space + Click to Pan | Scroll to Zoom</div>
+            <div class="instructions">Space+Drag: Pan | Scroll: Zoom | Shift: Line</div>
         </main>
     </div>
 
