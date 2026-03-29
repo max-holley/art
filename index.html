@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelCraft Pro</title>
+    <title>PixelCraft Pro - Desktop</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./logo.jpeg">
 </head>
 <body>
 
+    <div id="mobile-blocker">
+        <div class="message-box">
+            <h1>🖥️ Desktop Required</h1>
+            <p>PixelCraft Pro requires a larger screen and precise pointer input. Please switch to a Tablet, Laptop, or Desktop computer.</p>
+        </div>
+    </div>
+
     <div class="app-container">
         <aside class="toolbar">
-            <h2>PixelCraft</h2>
+            <h2>PixelCraft Pro</h2>
             
             <div class="control-group">
-                <label>Grid Size (8-64)</label>
-                <input type="number" id="grid-size" value="32" min="8" max="64">
-            </div>
-
-            <div class="control-group">
-                <label>Background Color</label>
-                <input type="color" id="bg-color-picker" value="#ffffff">
+                <label>Grid Size (8-128)</label>
+                <input type="number" id="grid-size" value="32" min="8" max="128">
             </div>
 
             <div class="control-group">
@@ -30,6 +32,7 @@
 
             <div class="button-group">
                 <button id="btn-draw" class="active">Pen</button>
+                <button id="btn-fill">Bucket Fill</button>
                 <button id="btn-erase">Eraser</button>
                 <button id="btn-clear">Clear All</button>
             </div>
@@ -37,10 +40,15 @@
             <hr>
 
             <div class="control-group">
+                <label>Zoom (Mouse Wheel to zoom)</label>
+                <button id="btn-reset-view">Reset View</button>
+            </div>
+
+            <div class="control-group">
                 <label>Export Format</label>
                 <select id="export-format">
-                    <option value="image/webp">WebP</option>
                     <option value="image/png">PNG</option>
+                    <option value="image/webp">WebP</option>
                     <option value="image/jpeg">JPEG</option>
                 </select>
             </div>
@@ -51,14 +59,17 @@
                 </label>
             </div>
 
-            <button id="btn-download" class="primary">Download Masterpiece</button>
+            <button id="btn-download" class="primary">Download Art</button>
         </aside>
 
         <main class="canvas-area">
-            <div id="canvas-container">
-                <canvas id="pixel-canvas"></canvas>
-                <canvas id="grid-canvas"></canvas>
+            <div id="viewport">
+                <div id="canvas-container">
+                    <canvas id="pixel-canvas"></canvas>
+                    <canvas id="grid-canvas"></canvas>
+                </div>
             </div>
+            <div class="instructions">Space + Click to Pan | Scroll to Zoom</div>
         </main>
     </div>
 
