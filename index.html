@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelCraft - Pixel Art Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="toolbar">
+            <h2>PixelCraft</h2>
+            
+            <div class="control-group">
+                <label>Grid Size</label>
+                <input type="number" id="grid-size" value="32" min="8" max="64">
+            </div>
+
+            <div class="control-group">
+                <label>Pen Color</label>
+                <input type="color" id="color-picker" value="#00ffcc">
+            </div>
+
+            <div class="button-group">
+                <button id="btn-draw" class="active">Pen</button>
+                <button id="btn-erase">Eraser</button>
+                <button id="btn-clear">Clear Canvas</button>
+            </div>
+
+            <hr>
+
+            <div class="control-group">
+                <label>Export Format</label>
+                <select id="export-format">
+                    <option value="image/png">PNG</option>
+                    <option value="image/jpeg">JPEG</option>
+                </select>
+                <button id="btn-download" class="primary">Download Image</button>
+            </div>
+        </aside>
+
+        <main class="canvas-area">
+            <canvas id="pixel-canvas"></canvas>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
