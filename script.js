@@ -52,7 +52,7 @@ window.onload = () => {
         gridCtx.clearRect(0, 0, canvasSize, canvasSize);
         gridCtx.beginPath();
         gridCtx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-        gridCtx.lineWidth = 0.5;
+        gridCtx.lineWidth = Math.max(0.5, 1 / scale);
         for (let i = 0; i <= canvasSize; i += s) {
             gridCtx.moveTo(i, 0); gridCtx.lineTo(i, canvasSize);
             gridCtx.moveTo(0, i); gridCtx.lineTo(canvasSize, i);
@@ -129,7 +129,7 @@ window.onload = () => {
 
     gridOpacityInput.oninput = drawGrid;
     bgColorPicker.oninput = () => canvas.style.backgroundColor = bgColorPicker.value;
-    btnReset.onclick = () => { scale=1; translateX=0; translateY=0; updateView(); };
+    btnReset.onclick = () => { scale=1; translateX=0; translateY=0; updateView(); drawGrid(); };
     btnClear.onclick = () => { if(confirm("Clear Canvas?")) { ctx.clearRect(0,0,canvasSize,canvasSize); saveState(); } };
     
     // Tools
@@ -198,6 +198,7 @@ window.onload = () => {
         if (e.ctrlKey) return; e.preventDefault();
         scale = Math.min(Math.max(scale * (e.deltaY < 0 ? 1.1 : 0.9), 0.1), 20);
         updateView();
+        drawGrid();
     }, { passive: false });
 
     window.addEventListener('keydown', (e) => { 
